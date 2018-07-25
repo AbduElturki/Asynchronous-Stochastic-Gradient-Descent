@@ -53,6 +53,7 @@ def worker(D,graph=None):
       tf.train.start_queue_runners(sess=sess)
       iteration = 0
       s = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
+      s.settimeout(30)
       s.connect((FLAGS.ip_PS, FLAGS.port))
       tic = time.time()
 
