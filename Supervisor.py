@@ -2,7 +2,7 @@ from __future__ import print_function
 import tensorflow as tf
 import Tf_op as df
 import socket as sck
-import Model_CIFAR10 as mdnn
+import Model_DNN as mdnn
 import Communication as com
 import mnist
 import time
