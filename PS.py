@@ -68,8 +68,6 @@ def listenToWorker(wsocket,sess,graph,iteration,update_op):
         feed_dict = {}
         for k in gradients.keys():
             feed_dict[k[:-5]+"_delta:0"]=new_gradients[k]
-            print k[:-5]+"_delta:0"
-            print feed_dict[k[:-5]+"_delta:0"]
 
         sess.run(update_op,feed_dict)
         # Add update to history
