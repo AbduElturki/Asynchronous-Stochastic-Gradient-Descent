@@ -18,7 +18,7 @@ Code inspired by: https://github.com/Hardy-c/AdaComp
 ## Getting Started
 
 This code has to be placed on different interconnected computational nodes:
-- One of them has the role of the PS. It communicates with every other nodes to maintain a central model.
+- One of them has the role of the PS. It communicates with every other nodes to maintain a central model. This can be executed using single core multicore using threading.
 - By default, other nodes are workers. They compute updates for the the central model using their local data. Updates are compressed before sending. 
 - Optionally, an other node could have the role of Supervisor. It contains a test dataset with which it computes the accuracy of the central model.
 
@@ -46,7 +46,7 @@ The example framework trains a 4-layers CNN with the same architecture than [mni
 Description of possibles flags :
 
 	--iter_max (default: 100000)   		Number of iterations to run on the PS.
-	--type_node (default: 'Worker')   	Worker|PS|Supervisor : define the role of the node executing the code.
+	--type_node (default: 'Worker')   	Worker|PS_Single|PS_Multi|Supervisor : define the role of the node executing the code.
 	--nb_workers (default: 100)   		Number of workers.
 	--id_worker (default: 1)   		ID of the local worker (should be included between 1 and nb_workers).
 	--ip_PS (default: '0.0.0.1')   		The ip address of PS.

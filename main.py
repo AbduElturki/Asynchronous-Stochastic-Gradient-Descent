@@ -1,7 +1,8 @@
 import tensorflow as tf
 import mnist
+import PS_Single
+import PS_Multi
 from Worker import worker
-from PS import PS
 from Supervisor import Supervisor
 
 
@@ -12,7 +13,7 @@ FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_integer('iter_max', 100000,
                             """Number of iterations to process on PS.""")
 tf.app.flags.DEFINE_string('type_node', 'Worker',
-                            """Worker|PS|Superisor : define the local computation node""")
+                            """Worker|PS_Single|PS_Multi|Superisor : define the local computation node""")
 tf.app.flags.DEFINE_integer('nb_workers', 100,
                             """Number of workers.""")
 tf.app.flags.DEFINE_integer('id_worker', 0,
@@ -45,8 +46,15 @@ if FLAGS.type_node == "Supervisor":
         #Test model
         Supervisor(test_data,graph)
 
-if FLAGS.type_node == "PS":
+if FLAGS.type_node == "PS_Single":
     #Update model loop
-    PS()
+    PS_Single.PS()
+
+if FlAGS.type_node == "PS_Multi":
+    #Update model loop multicore
+    PS_Multi.PS()
+
+    
+
 
 
