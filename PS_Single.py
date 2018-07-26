@@ -8,10 +8,6 @@ import Communication as com
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_integer('learning_rate', -0.1,
-                            """ Learning rate of the gradient descent.""")
-
-
 # ADACOMP - compute staleness
 def count_pred(history,key,loc):
     if history == [] :

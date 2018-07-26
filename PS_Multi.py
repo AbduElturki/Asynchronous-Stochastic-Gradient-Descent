@@ -8,9 +8,6 @@ import threading
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_float('learning_rate', -0.001,
-                            """ Learning rate of the gradient descent.""")
-
 # Parameter Server routine
 def PS():
     with tf.Graph().as_default() as graph:

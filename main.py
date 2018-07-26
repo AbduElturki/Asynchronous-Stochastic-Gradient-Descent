@@ -13,7 +13,7 @@ FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_integer('iter_max', 100000,
                             """Number of iterations to process on PS.""")
 tf.app.flags.DEFINE_string('type_node', 'Worker',
-                            """Worker|PS_Single|PS_Multi|Superisor : define the local computation node""")
+                            """Worker|PSSingle|PSMulti|Superisor : define the local computation node""")
 tf.app.flags.DEFINE_integer('nb_workers', 100,
                             """Number of workers.""")
 tf.app.flags.DEFINE_integer('id_worker', 0,
@@ -28,6 +28,9 @@ tf.app.flags.DEFINE_integer('image_depth', 1,
                             """The depth of image""")
 tf.app.flags.DEFINE_integer('nb_classes', 10,
                             """ Number of classes""")
+tf.app.flags.DEFINE_integer('learning_rate', -0.1,
+                            """ Learning rate of the gradient descent.""")
+
 
 
 
@@ -46,11 +49,11 @@ if FLAGS.type_node == "Supervisor":
         #Test model
         Supervisor(test_data,graph)
 
-if FLAGS.type_node == "PS_Single":
+if FLAGS.type_node == "PSSingle":
     #Update model loop
     PS_Single.PS()
 
-if FlAGS.type_node == "PS_Multi":
+if FLAGS.type_node == "PSMulti":
     #Update model loop multicore
     PS_Multi.PS()
 
