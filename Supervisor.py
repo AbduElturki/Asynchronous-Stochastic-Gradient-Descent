@@ -46,6 +46,7 @@ def Supervisor(D,graph=None):
         while iteration <FLAGS.iter_max:
             s = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
             s.connect((FLAGS.ip_PS, FLAGS.port))
+            s.settimeout(None)
 
             #Get parameters from PS
             com.send_msg(s,"","GET_W")
