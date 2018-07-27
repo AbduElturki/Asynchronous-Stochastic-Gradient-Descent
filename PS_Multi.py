@@ -28,6 +28,7 @@ def PS():
             tcpsock = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
             tcpsock.setsockopt(sck.SOL_SOCKET, sck.SO_REUSEADDR, 1)
             tcpsock.bind(("",FLAGS.port))
+            tcpsock.settimeout(None)
 
             history = []
             iteration = 0
