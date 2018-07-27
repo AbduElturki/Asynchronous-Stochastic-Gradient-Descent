@@ -37,14 +37,14 @@ def PS():
                 while 1:
                     #print "waiting to listen"
                     tcpsock.listen(1)
-                    (wsocket, (ip, port)) = tcpsock.accept()
                     #print wsocket
                     threading.Thread(target=listenToWorker,
-                                     args=(wsocket,sess,graph,iteration,update_op)).run()
+                                     args=(tcpsock,sess,graph,iteration,update_op)).run()
                     #print "done listening"
     print "PS is closed"
 
-def listenToWorker(wsocket,sess,graph,iteration,update_op):
+def listenToWorker(tcpsock,sess,graph,iteration,update_op):
+    (wsocket, (ip, port)) = tcpsock.accept()
     cmd,data = com.recv_msg(wsocket)
     if cmd == "GET_W":
         #Encode parameter
