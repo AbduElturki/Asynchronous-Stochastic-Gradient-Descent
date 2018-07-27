@@ -76,6 +76,7 @@ def worker(D,graph=None):
 
         #Push the update to PS
         s = sck.socket(sck.AF_INET, sck.SOCK_STREAM)
+        s.settimeout(None)
         s.connect((FLAGS.ip_PS, FLAGS.port))
         com.send_msg(s,update,"PUSH")
         toc = time.time()
