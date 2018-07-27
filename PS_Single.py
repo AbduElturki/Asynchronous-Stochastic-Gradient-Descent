@@ -8,15 +8,6 @@ import Communication as com
 
 FLAGS = tf.app.flags.FLAGS
 
-# ADACOMP - compute staleness
-def count_pred(history,key,loc):
-    if history == [] :
-        st = [0 for i in loc]
-    else:
-        st = np.add.reduce([[1 if i in h[key] else 0 for i in loc] for h in history], axis=0)
-    return st
-
-
 # Parameter Server routine
 def PS():
     with tf.Graph().as_default() as graph:
@@ -34,7 +25,6 @@ def PS():
 
         update_op = df.apply_sparse_update(graph,"W_global")
 
-      
         with tf.Session(graph=graph) as sess:
       
             # Initialize the Deep Neural Network
