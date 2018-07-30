@@ -36,7 +36,7 @@ def PS():
             while iteration <FLAGS.iter_max+FLAGS.nb_workers-1:
                 while 1:
                     #print "waiting to listen"
-                    tcpsock.listen(1)
+                    tcpsock.listen(5)
                     #print wsocket
                     threading.Thread(target=listenToWorker,
                                      args=(tcpsock,sess,graph,iteration,update_op)).run()
