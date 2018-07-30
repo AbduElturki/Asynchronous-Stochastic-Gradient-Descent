@@ -34,18 +34,16 @@ def PS():
             iteration = 0
 
             while iteration <FLAGS.iter_max+FLAGS.nb_workers-1:
+                tcpsock.listen(50)
                 while 1:
-                    #print "waiting to listen"
-                    tcpsock.listen(5)
-                    #print wsocket
+                    (wsocket, (ip, port)) = tcpsock.accept()
+                    cmd,data = com.recv_msg(wsocket)
                     threading.Thread(target=listenToWorker,
-                                     args=(tcpsock,sess,graph,iteration,update_op)).run()
+                                     args=(wsocket,cmd,data,sess,graph,iteration,update_op)).run()
                     #print "done listening"
     print "PS is closed"
 
-def listenToWorker(tcpsock,sess,graph,iteration,update_op):
-    (wsocket, (ip, port)) = tcpsock.accept()
-    cmd,data = com.recv_msg(wsocket)
+def listenToWorker(wsocket,cmd,data,sess,graph,iteration,update_op):
     if cmd == "GET_W":
         #Encode parameter
         parameters = com.encode_variables(sess,"W_global",iteration,compression=1)
