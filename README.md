@@ -63,9 +63,9 @@ The MNIST training dataset contained in data_Mnist.tar.gz was split in 1200 file
 
 To run the script with default hyper-parameters and 10 workers :
 
-* On PS node :
+* On PS node (using a single thread):
 
-		python main.py --type_node PS --nb_workers 10
+		python main.py --type_node PSSingle --nb_workers 10
 
 * On Worker node `n` :
 
