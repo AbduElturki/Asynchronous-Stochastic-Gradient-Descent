@@ -2,7 +2,7 @@
 
 Asynchronous Stochastic Gradient Descent (ASGD) is a method to distribute stochastic gradient descent (SGD) onto a large number of workers in the parameter server model (PS).
 https://ieeexplore.ieee.org/document/6638950/ 
-Code inspired by: https://github.com/Hardy-c/AdaComp
+Some parts of the code are taken from: https://github.com/Hardy-c/AdaComp
 
 ## List of files
 
